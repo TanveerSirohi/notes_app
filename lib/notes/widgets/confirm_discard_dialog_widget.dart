@@ -18,17 +18,13 @@ class ConfirmDiscardDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             const Icon(Icons.info, size: 40, color: Colors.white70),
-
             const SizedBox(height: 25),
-
             const Text(
               "Are you sure you want\ndiscard your changes ?",
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 22, color: Colors.white),
             ),
-
             const SizedBox(height: 30),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -43,11 +39,7 @@ class ConfirmDiscardDialog extends StatelessWidget {
                   ),
                   onPressed: () {
                     Navigator.pop(context, true);
-                    showDialog(
-                      context: context,
-                      barrierDismissible: false,
-                      builder: (context) => ConfirmDiscardDialog(),
-                    );
+
                     // confirm discard
                   },
                   child: const Text("Discard"),

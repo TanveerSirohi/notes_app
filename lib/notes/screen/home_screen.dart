@@ -14,12 +14,12 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.blackcolor,
-
       body: Padding(
-        padding: const EdgeInsets.only(top: 45, left: 30),
+        padding: const EdgeInsets.only(top: 55),
         child: Column(
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
                   'Notes',
@@ -52,23 +52,13 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(width: 20),
-                Container(
-                  width: 50,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color: AppColor.greycolor,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: SvgPicture.asset(
-                    IconAssets.infoIcons,
-                    fit: BoxFit.none,
-                  ),
-                ),
               ],
             ),
-            SizedBox(height: 100),
-            Image.asset(ImageAssets.addnoteImage),
+            // SizedBox(height: 100),
+            Padding(
+              padding: const EdgeInsets.only(top: 70),
+              child: Image.asset(ImageAssets.addnoteImage),
+            ),
           ],
         ),
       ),

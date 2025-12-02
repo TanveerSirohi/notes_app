@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/notes/widgets/confirm_discard_dialog_widget.dart';
+import 'package:notes_app/notes/widgets/save_notes_widget.dart';
 
 class SaveChangesDialog extends StatelessWidget {
   const SaveChangesDialog({super.key});
@@ -54,7 +56,14 @@ class SaveChangesDialog extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  onPressed: () => Navigator.pop(context, false),
+                  onPressed: () {
+                    Navigator.pop(context, false);
+                    showDialog(
+                      context: context,
+                      barrierDismissible: false,
+                      builder: (context) => ConfirmDiscardDialog(),
+                    );
+                  },
                   child: const Text("Discard"),
                 ),
 
@@ -67,7 +76,9 @@ class SaveChangesDialog extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  onPressed: () => Navigator.pop(context, true),
+                  onPressed: () {
+                    Navigator.pop(context, false);
+                  },
                   child: const Text("Save"),
                 ),
               ],
