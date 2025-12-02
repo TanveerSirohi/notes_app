@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:hive/hive.dart';
+
 import 'package:notes_app/color/app_color.dart';
 import 'package:notes_app/core/icon_assets.dart';
 import 'package:notes_app/notes/widgets/editor_textfield_widget.dart';
@@ -57,17 +57,17 @@ class _EditorScreenState extends State<EditorScreen> {
                           ),
                           child: InkWell(
                             onTap: () {
-                              final box = Hive.box('notesBox');
-                              box.add(
-                                  'yourNoteText'); // <-- plug your controller text here
+                              // final box = Hive.box('notesBox');
+                              // box.add(
+                              //     'yourNoteText'); // <-- plug your controller text here
 
-                              Navigator.pop(context); // close dialog
-                              Navigator.pop(context); // go back to home screen
-                              // showDialog(
-                              //   context: context,
-                              //   barrierDismissible: false,
-                              //   builder: (context) => SaveChangesDialog(),
-                              // );
+                              // Navigator.pop(context); // close dialog
+                              // Navigator.pop(context); // go back to home screen
+                              showDialog(
+                                context: context,
+                                barrierDismissible: false,
+                                builder: (context) => SaveChangesDialog(),
+                              );
                             },
                             child: SvgPicture.asset(
                               IconAssets.saveIcon,
