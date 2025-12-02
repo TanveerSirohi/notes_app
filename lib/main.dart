@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/notes/screen/editor_screen.dart';
 import 'package:notes_app/notes/screen/home_screen.dart';
-import 'package:notes_app/notes/screen/searching_screen.dart';
 
 void main() {
   runApp(const MyApp());
