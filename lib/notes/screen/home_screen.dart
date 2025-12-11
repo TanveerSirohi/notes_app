@@ -4,11 +4,19 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:notes_app/color/app_color.dart';
 import 'package:notes_app/core/icon_assets.dart';
 import 'package:notes_app/core/image_assets.dart';
+
 import 'package:notes_app/notes/screen/editor_screen.dart';
 import 'package:notes_app/notes/screen/searching_screen.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  List<Map<String, String>> notes = [];
 
   @override
   Widget build(BuildContext context) {
@@ -54,20 +62,58 @@ class HomeScreen extends StatelessWidget {
                 ),
               ],
             ),
-            // SizedBox(height: 100),
-            Padding(
-              padding: const EdgeInsets.only(top: 70),
-              child: Image.asset(ImageAssets.addnoteImage),
-            ),
+            // //SizedBox(height: 100),
+            Expanded(
+              child: notes.isEmpty
+                  ? Padding(
+                      padding: const EdgeInsets.only(top: 70),
+                      child: Image.asset(ImageAssets.addnoteImage),
+                    )
+                  : ListView.builder(
+                      itemCount: notes.length,
+                      itemBuilder: (context, index) {
+                        final note = notes[index];
+                        return ListTile(
+                          title: Text(
+                            note["title"]!,
+                            style: GoogleFonts.nunito(
+                              color: AppColor.whitecolor,
+                              fontSize: 20,
+                            ),
+                          ),
+                          subtitle: Text(
+                            note["content"]!,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(color: AppColor.lightcolor),
+                          ),
+                        );
+                      },
+                    ),
+            )
+
+            // Padding(
+            //   padding: const EdgeInsets.only(top: 70),
+            //   child: Image.asset(ImageAssets.addnoteImage),
+            // ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
+        onPressed: () async {
+          final data = await Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => EditorScreen()),
           );
+
+          if (data != null) {
+            setState(() {
+              notes.add({
+                "title": data["title"],
+                "content": data["content"],
+              });
+            });
+          }
         },
         child: Container(
           width: 70,

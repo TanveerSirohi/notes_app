@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:meta/meta.dart';
 import 'package:notes_app/notes/widgets/confirm_discard_dialog_widget.dart';
 import 'package:notes_app/notes/widgets/save_notes_widget.dart';
 
 class SaveChangesDialog extends StatelessWidget {
-  const SaveChangesDialog({super.key});
+  const SaveChangesDialog(Required required, Type voidCallback, 
+      {super.key,
+      required void Function() onSave,
+      required void Function() onDiscard, required void Function() Save});
 
   @override
   Widget build(BuildContext context) {

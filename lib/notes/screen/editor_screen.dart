@@ -63,11 +63,11 @@ class _EditorScreenState extends State<EditorScreen> {
 
                               // Navigator.pop(context); // close dialog
                               // Navigator.pop(context); // go back to home screen
-                              showDialog(
-                                context: context,
-                                barrierDismissible: false,
-                                builder: (context) => SaveChangesDialog(),
-                              );
+                              // showDialog(
+                              //   context: context,
+                              //   barrierDismissible: false,
+                              //   // builder: (context) => SaveChangesDialog(),
+                              // );
                             },
                             child: SvgPicture.asset(
                               IconAssets.saveIcon,
@@ -80,7 +80,7 @@ class _EditorScreenState extends State<EditorScreen> {
                   ],
                 ),
                 SizedBox(height: 30),
-                EditorTextFieldWidget(),
+                // EditorTextFieldWidget(titleController: null,, bodyController: null,, contentController: null,),
               ],
             ),
           ),
